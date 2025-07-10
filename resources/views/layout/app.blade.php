@@ -62,9 +62,10 @@
             <a href="{{ route('product-sales.index') }}" class="{{ request()->is('product-sales*') ? 'active' : '' }}">
                 <i class="bi bi-cart-check nav-icon me-2"></i> Transaksi Produk
             </a>
-            <a href="{{ route('users.index') }}" class="{{ request()->is('users*') ? 'active' : '' }}">
-                <i class="bi bi-people nav-icon me-2"></i> Pengguna
-            </a>
+           <a href="{{ route('laporan.index') }}" class="nav-link {{ request()->is('laporan*') ? 'active' : '' }}">
+    <i class="bi bi-clipboard-data me-2"></i> Laporan
+</a>
+
             <form method="POST" action="{{ route('logout') }}" class="mt-4">
                 @csrf
                 <button class="btn btn-danger w-100">
