@@ -2,63 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TicketSale;
+use App\Models\Film;
 use Illuminate\Http\Request;
 
 class TicketSaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $sales = TicketSale::with('film')->latest()->get();
+        return view('ticket_sales.index', compact('sales'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $films = Film::all();
+        return view('ticket_sales.create', compact('films'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'film_id' => 'required|exists:films,id',
+            'jumlah_tiket' => 'required|integer|min:1',
+            'total_harga' => 'required|integer',
+        ]);
+
+        TicketSale::create($request->all());
+
+        return redirect()->route('ticket-sales.index')->with('success', 'Transaksi tiket berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(TicketSale $ticketSale)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $ticketSale->delete();
+        return redirect()->route('ticket-sales.index')->with('success', 'Transaksi tiket dihapus.');
     }
 }
