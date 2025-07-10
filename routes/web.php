@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TicketSaleController;
+use App\Http\Controllers\ProductSaleController;
 use App\Http\Controllers\FilmController;
 
 // Redirect root URL ke login
