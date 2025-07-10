@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+USE App\Http\Controllers\ProductController;
 use App\Http\Controllers\FilmController;
 
 // Redirect root URL ke login
