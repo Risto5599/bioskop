@@ -14,7 +14,6 @@ class Film extends Model
         'genre',
         'durasi',
         'sinopsis',
-        'poster',
     ];
 
     public function ticketSales()

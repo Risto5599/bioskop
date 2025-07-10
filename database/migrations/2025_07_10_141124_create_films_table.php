@@ -17,7 +17,6 @@ return new class extends Migration
         $table->string('genre');
         $table->integer('durasi'); // dalam menit
         $table->text('sinopsis');
-        $table->string('poster')->nullable(); // path gambar
         $table->timestamps();
     });
     }
