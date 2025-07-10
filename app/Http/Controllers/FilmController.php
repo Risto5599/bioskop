@@ -13,6 +13,11 @@ class FilmController extends Controller
         return view('films.index', compact('films'));
     }
 
+    public function create()
+    {
+        return view('films.create');
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -26,6 +31,16 @@ class FilmController extends Controller
 
         return redirect()->route('films.index')
             ->with('success', 'Film berhasil ditambahkan!');
+    }
+
+    public function show(Film $film)
+    {
+        return view('films.show', compact('film'));
+    }
+
+    public function edit(Film $film)
+    {
+        return view('films.edit', compact('film'));
     }
 
     public function update(Request $request, Film $film)

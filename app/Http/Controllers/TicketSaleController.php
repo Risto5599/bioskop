@@ -10,8 +10,9 @@ class TicketSaleController extends Controller
 {
     public function index()
     {
-        $sales = TicketSale::with('film')->latest()->get();
-        return view('ticket_sales.index', compact('sales'));
+       $sales = TicketSale::with('film')->latest()->get();
+    $films = \App\Models\Film::all(); // tambahkan ini
+    return view('ticket_sales.index', compact('sales', 'films'));
     }
 
     public function create()
